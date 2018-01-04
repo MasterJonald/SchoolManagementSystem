@@ -1,0 +1,27 @@
+c:\users\jeremy\documents\visual studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystem\bin\Debug\SchoolManagementSystem.exe.config
+c:\users\jeremy\documents\visual studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystem\bin\Debug\SchoolManagementSystem.exe
+c:\users\jeremy\documents\visual studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystem\bin\Debug\SchoolManagementSystem.pdb
+c:\users\jeremy\documents\visual studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.csprojResolveAssemblyReference.cache
+c:\users\jeremy\documents\visual studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Form1.resources
+c:\users\jeremy\documents\visual studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Properties.Resources.resources
+c:\users\jeremy\documents\visual studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.csproj.GenerateResource.Cache
+c:\users\jeremy\documents\visual studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.exe
+c:\users\jeremy\documents\visual studio 2015\Projects\SchoolManagementSystem\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.pdb
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\bin\Debug\SchoolManagementSystem.exe.config
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.exe
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.pdb
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\bin\Debug\SchoolManagementSystem.exe
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\bin\Debug\SchoolManagementSystem.pdb
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.csprojResolveAssemblyReference.cache
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Form1.resources
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Properties.Resources.resources
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.csproj.GenerateResource.Cache
+C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\bin\Debug\SchoolManagementSystem.exe.config
+C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.exe
+C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.pdb
+C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\bin\Debug\SchoolManagementSystem.exe
+C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\bin\Debug\SchoolManagementSystem.pdb
+C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.csprojResolveAssemblyReference.cache
+C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Form1.resources
+C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Properties.Resources.resources
+C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.csproj.GenerateResource.Cache
