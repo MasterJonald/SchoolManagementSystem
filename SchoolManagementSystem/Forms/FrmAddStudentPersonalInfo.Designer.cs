@@ -1,6 +1,6 @@
 ﻿namespace SchoolManagementSystem
 {
-    partial class Form1
+    partial class FrmAddStudentPersonalInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -230,14 +230,15 @@
             this.btnBrowseImage.Location = new System.Drawing.Point(375, 147);
             this.btnBrowseImage.Name = "btnBrowseImage";
             this.btnBrowseImage.Size = new System.Drawing.Size(48, 24);
-            this.btnBrowseImage.TabIndex = 5;
+            this.btnBrowseImage.TabIndex = 10;
             this.btnBrowseImage.Text = "...";
             this.btnBrowseImage.UseVisualStyleBackColor = true;
             this.btnBrowseImage.Click += new System.EventHandler(this.btnBrowseImage_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(128, 387);
+            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSave.Location = new System.Drawing.Point(103, 386);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(85, 29);
             this.btnSave.TabIndex = 10;
@@ -245,7 +246,7 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // Form1
+            // FrmAddStudentPersonalInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -273,7 +274,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblStudentNo);
-            this.Name = "Form1";
+            this.Name = "FrmAddStudentPersonalInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Personal Information";
             this.Load += new System.EventHandler(this.Form1_Load);

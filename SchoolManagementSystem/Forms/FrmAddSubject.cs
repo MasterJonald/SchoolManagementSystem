@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -11,24 +10,24 @@ using System.Windows.Forms;
 
 using System.Data.SqlClient;
 using System.Diagnostics;
-
+using System.Configuration;
 
 namespace SchoolManagementSystem
 {
     public partial class FrmAddSubject : Form
     {
         private static string connectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
-        private string subjectCode { get; set; }
+        private string SubjectCode { get; set; }
 
-        private SqlConnection sqlconn { get; set; }
-        private SqlCommand sqlcomm { get; set; }
+        private SqlConnection Sqlconn { get; set; }
+        private SqlCommand Sqlcomm { get; set; }
         
         public FrmAddSubject(string subjectCode)
         {
             InitializeComponent();
 
             txtSubjectCode.Enabled = false;
-            this.subjectCode = subjectCode;
+            this.SubjectCode = subjectCode;
             this.Text = "EDIT-SUBJECT";
             SetSubjectInformation();
         }
@@ -64,26 +63,27 @@ namespace SchoolManagementSystem
                 "WHERE SubjectCode = {3}", txtDescription.Text, cmbGradeLevel.Text, active, txtSubjectCode.Text);
                 UpdateDatabase(query);
             }
-        }
+
+          }
 
         private void UpdateDatabase(string query)
         {
-            sqlconn = new SqlConnection(connectionString);
-            sqlconn.Open();
+            Sqlconn = new SqlConnection(connectionString);
+            Sqlconn.Open();
 
-            sqlcomm = new SqlCommand(query, sqlconn);
-            sqlcomm.ExecuteNonQuery();
-            sqlconn.Close();
+            Sqlcomm = new SqlCommand(query, Sqlconn);
+            Sqlcomm.ExecuteNonQuery();
+            Sqlconn.Close();
         }
 
         private void SetSubjectInformation()
         {
-            string query = string.Format("SELECT * FROM Subject WHERE SubjectCode = '{0}'", this.subjectCode);
-            sqlconn = new SqlConnection(connectionString);
-            sqlconn.Open();
+            string query = string.Format("SELECT * FROM Subject WHERE SubjectCode = '{0}'", this.SubjectCode);
+            Sqlconn = new SqlConnection(connectionString);
+            Sqlconn.Open();
 
-            sqlcomm = new SqlCommand(query, sqlconn);
-            SqlDataReader sqlReader = sqlcomm.ExecuteReader();
+            Sqlcomm = new SqlCommand(query, Sqlconn);
+            SqlDataReader sqlReader = Sqlcomm.ExecuteReader();
 
             while (sqlReader.Read())
             {
@@ -96,11 +96,11 @@ namespace SchoolManagementSystem
 
         private void PutGradeLevelDescriptionToComboBox()
         {
-            sqlconn = new SqlConnection(connectionString);
-            sqlconn.Open();
+            Sqlconn = new SqlConnection(connectionString);
+            Sqlconn.Open();
 
-            sqlcomm = new SqlCommand("SELECT Description FROM GradeLevel", sqlconn);
-            SqlDataReader sqlReader = sqlcomm.ExecuteReader();
+            Sqlcomm = new SqlCommand("SELECT Description FROM GradeLevel", Sqlconn);
+            SqlDataReader sqlReader = Sqlcomm.ExecuteReader();
 
             while (sqlReader.Read())
             {

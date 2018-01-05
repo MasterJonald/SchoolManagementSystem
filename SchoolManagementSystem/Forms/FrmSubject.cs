@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Data.SqlClient;
-using System.Configuration;
 using System.Diagnostics;
 
 namespace SchoolManagementSystem
 {
+
     public partial class FrmSubject : Form
     {
-        private static string connectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
+        //private static string connectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
 
         SqlConnection sqlconn { get; set; }
 
@@ -32,11 +32,11 @@ namespace SchoolManagementSystem
 
         private void ViewSubject()
         {
-            string query = "select SubjectCode, Description, GradeLevel," +
-                "case when Active = 1 then 'Active' else 'Inactive' end as Active  from subject";
+            string query = "SELECT SubjectCode, Description, GradeLevel," +
+                "CASE WHEN Active = 1 THEN 'Active' ELSE 'Inactive' END AS Active  FROM Subject";
             DataTable dataTable = new DataTable();
 
-            sqlconn = new SqlConnection(connectionString);
+            sqlconn = new SqlConnection(GlobalVariable.ConnectionString);
             sqlconn.Open();
 
             SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlconn);
@@ -57,8 +57,21 @@ namespace SchoolManagementSystem
         
         private void btnNew_Click(object sender, EventArgs e)
         {
+            DialogResult dr2;
+
             FrmAddSubject frmAddSub = new FrmAddSubject();
-            frmAddSub.ShowDialog(this);
+            DialogResult dr = frmAddSub.ShowDialog(this);
+
+            while (dr == DialogResult.Yes)
+            {
+                ViewSubject();
+                dr2 = frmAddSub.ShowDialog(this);
+
+                if (dr2 == DialogResult.Cancel)
+                {
+                    break;
+                }
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

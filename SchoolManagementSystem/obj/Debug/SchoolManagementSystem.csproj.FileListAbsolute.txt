@@ -13,7 +13,6 @@ C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSyst
 C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\bin\Debug\SchoolManagementSystem.exe
 C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\bin\Debug\SchoolManagementSystem.pdb
 C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.csprojResolveAssemblyReference.cache
-C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Form1.resources
 C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Properties.Resources.resources
 C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.csproj.GenerateResource.Cache
 C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\bin\Debug\SchoolManagementSystem.exe.config
@@ -28,6 +27,11 @@ C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSy
 C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.FrmAddSubject.resources
 C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.FrmSubject.resources
 C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.FrmAddSubject.resources
-C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.FrmSubject.resources
 C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Forms.FrmLogin.resources
 C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Forms.FrmEncodeGrades.resources
+C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Forms.FrmEncodeGrades.resources
+C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Forms.FrmLogin.resources
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.FrmSubject.resources
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Forms.FrmAddStudentRecord.resources
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.FrmAddStudentPersonalInfo.resources
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Forms.FrmStudentPersonalInfo.resources
