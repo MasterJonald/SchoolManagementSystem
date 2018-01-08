@@ -29,7 +29,7 @@ namespace SchoolManagementSystem.Forms
 
         private void ViewStudentPersonalInfo()
         {
-            string query = "SELECT StudentNumber, FirstName, LastName," +
+            string query = "SELECT StudentNo, FirstName, LastName," +
                 "MiddleName from StudentPersonalInfo";
             DataTable dataTable = new DataTable();
 

@@ -18,7 +18,7 @@ namespace SchoolManagementSystem
     {
         //private static string connectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
 
-        SqlConnection sqlconn { get; set; }
+        SqlConnection Sqlconn { get; set; }
 
         public FrmSubject()
         {
@@ -32,18 +32,18 @@ namespace SchoolManagementSystem
 
         private void ViewSubject()
         {
-            string query = "SELECT SubjectCode, Description, GradeLevel," +
-                "CASE WHEN Active = 1 THEN 'Active' ELSE 'Inactive' END AS Active  FROM Subject";
+            string query = "SELECT SubjectCode, Description, GradeLevelID," +
+                "TimeFrom, TimeTo, CASE WHEN Active = 1 THEN 'Active' ELSE 'Inactive' END AS Active  FROM Subject";
             DataTable dataTable = new DataTable();
 
-            sqlconn = new SqlConnection(GlobalVariable.ConnectionString);
-            sqlconn.Open();
+            Sqlconn = new SqlConnection(GlobalVariable.ConnectionString);
+            Sqlconn.Open();
 
-            SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlconn);
+            SqlDataAdapter sqlDa = new SqlDataAdapter(query, Sqlconn);
 
             sqlDa.Fill(dataTable);
             dataGridView1.DataSource = dataTable;
-            sqlconn.Close();
+            Sqlconn.Close();
         }
         
 
@@ -53,6 +53,7 @@ namespace SchoolManagementSystem
 
             FrmAddSubject frmAddSub = new FrmAddSubject(subjectCode);
             frmAddSub.ShowDialog(this);
+            ViewSubject();
         }
         
         private void btnNew_Click(object sender, EventArgs e)

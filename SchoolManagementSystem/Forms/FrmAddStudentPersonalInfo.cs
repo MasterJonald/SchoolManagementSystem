@@ -23,7 +23,6 @@ namespace SchoolManagementSystem
 
         private String SourceImagePath { get; set; }
         private String DestinationImagePath { get; set; }
-        private string Studentnumber { get; set; }
 
         SqlConnection sqlconn { get; set; }
         SqlCommand sqlcomm { get; set; }
@@ -32,10 +31,10 @@ namespace SchoolManagementSystem
         {
             InitializeComponent();
             this.Text = "EDIT-STUDENT";
-            this.Studentnumber = studentNumber;
+            txtStudentNumber.Text = studentNumber;
             this.txtStudentNumber.Enabled = false;
             
-            SetStudentInformation();
+            SetStudentInformation(studentNumber);
         }
 
         public FrmAddStudentPersonalInfo()
@@ -49,10 +48,10 @@ namespace SchoolManagementSystem
             //CopyFileToNewLocation();
         }
 
-        private void SetStudentInformation()
+        private void SetStudentInformation(string studentNumber)
         {
-            string query = string.Format("SELECT * FROM StudentPersonalInfo WHERE StudentNumber = '{0}'", 
-                this.Studentnumber);
+            string query = string.Format("SELECT * FROM StudentPersonalInfo WHERE StudentNo = '{0}'",
+                studentNumber);
             sqlconn = new SqlConnection(connectionString);
             sqlconn.Open();
 
@@ -67,12 +66,11 @@ namespace SchoolManagementSystem
                 txtMiddleName.Text = sqlReader[3].ToString();
                 txtAddress.Text = sqlReader[4].ToString();
                 cmbGender.Text = sqlReader[5].ToString();
-                txtAge.Text = sqlReader[6].ToString();
-                //dateTimePicker1.Value = DateTime(sqlReader[7]);
-                txtPlaceOfBirth.Text = sqlReader[8].ToString();
-                studentImage.ImageLocation = sqlReader[9].ToString();
+                dateTimePicker1.Value = Convert.ToDateTime(sqlReader[6]);
+                txtPlaceOfBirth.Text = sqlReader[7].ToString();
+                studentImage.ImageLocation = Application.StartupPath +  sqlReader[8].ToString();
 
-                DestinationImagePath = sqlReader[9].ToString();
+                DestinationImagePath = Application.StartupPath + sqlReader[8].ToString();
             }
         }
 
@@ -84,30 +82,26 @@ namespace SchoolManagementSystem
             {
                 CopyFileToNewLocation();
 
-                query = string.Format("INSERT INTO StudentPersonalInfo VALUES ('{0}', '{1}', '{2}','{3}', '{4}', '{5}',{6}, '{7}', '{8}', '{9}')",
+                query = string.Format("INSERT INTO StudentPersonalInfo VALUES ('{0}', '{1}', '{2}','{3}', '{4}', '{5}','{6}', '{7}', '{8}')",
                      txtStudentNumber.Text, txtFirstName.Text, txtLastName.Text, txtMiddleName.Text,
-                     txtAddress.Text, cmbGender.Text, txtAge.Text, dateTimePicker1.Value, 
+                     txtAddress.Text, cmbGender.Text, dateTimePicker1.Value, 
                      txtPlaceOfBirth.Text, DestinationImagePath);
 
                 UpdateDatabase(query);
             }
 
-            else
+            else if(this.Text.Contains("EDIT"))
             {
                 CopyFileToNewLocation();
 
                 query = string.Format("UPDATE StudentPersonalInfo SET FirstName = '{0}', LastName = '{1}'," +
-                    "MiddleName = '{2}', Address = '{3}', Gender = '{4}', Age = {5}, " +
-                    "DateOfBirth = '{6}', PlaceOfBirth = '{7}', ImagePath = '{8}' WHERE StudentNumber = '{9}'", 
+                    "MiddleName = '{2}', Address = '{3}', Gender = '{4}', DateOfBirth = '{5}', PlaceOfBirth = '{6}', "+
+                    "ImagePath = '{7}' WHERE StudentNo = '{8}'", 
                     txtFirstName.Text, txtLastName.Text, txtMiddleName .Text, txtAddress.Text,
-                    cmbGender.Text, txtAge.Text, dateTimePicker1.Value, txtPlaceOfBirth.Text, DestinationImagePath, 
-                    Studentnumber);
+                    cmbGender.Text, dateTimePicker1.Value, txtPlaceOfBirth.Text, DestinationImagePath, 
+                    txtStudentNumber.Text);
                 UpdateDatabase(query);
-
             }
-
-
-
         }
 
         private void UpdateDatabase(string query )
@@ -156,7 +150,8 @@ namespace SchoolManagementSystem
             string fileNewName = txtStudentNumber.Text + Path.GetExtension(this.SourceImagePath);
 
             string sourcePath = Path.GetDirectoryName(this.SourceImagePath);
-            string targetPath = ConfigurationManager.AppSettings["ImageDestination"].ToString();
+            //string targetPath = ConfigurationManager.AppSettings["ImageDestination"].ToString();
+            string targetPath = Application.StartupPath + @"\StudentPhoto";
 
             // Use Path class to manipulate file and directory paths.
             string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
@@ -171,7 +166,7 @@ namespace SchoolManagementSystem
             // To copy a file to another location and 
             // overwrite the destination file if it already exists.
             System.IO.File.Copy(sourceFile, destFile, true);
-            this.DestinationImagePath = destFile;
+            this.DestinationImagePath = @"\StudentPhoto\" + fileNewName;
         }
     }
 }

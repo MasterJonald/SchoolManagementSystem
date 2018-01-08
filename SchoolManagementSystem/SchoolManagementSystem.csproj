@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseHandler.cs" />
+    <Compile Include="Forms\FrmBackground.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBackground.Designer.cs">
+      <DependentUpon>FrmBackground.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmEncodeGrades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,12 @@
     <Compile Include="Forms\FrmAddStudentRecord.Designer.cs">
       <DependentUpon>FrmAddStudentRecord.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmStudentRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmStudentRecord.Designer.cs">
+      <DependentUpon>FrmStudentRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmSubject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +105,9 @@
     <Compile Include="GlobalVar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FrmBackground.resx">
+      <DependentUpon>FrmBackground.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmEncodeGrades.resx">
       <DependentUpon>FrmEncodeGrades.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmAddStudentRecord.resx">
       <DependentUpon>FrmAddStudentRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmStudentRecord.resx">
+      <DependentUpon>FrmStudentRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmSubject.resx">
       <DependentUpon>FrmSubject.cs</DependentUpon>

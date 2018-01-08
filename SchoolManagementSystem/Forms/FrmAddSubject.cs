@@ -17,7 +17,6 @@ namespace SchoolManagementSystem
     public partial class FrmAddSubject : Form
     {
         private static string connectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
-        private string SubjectCode { get; set; }
 
         private SqlConnection Sqlconn { get; set; }
         private SqlCommand Sqlcomm { get; set; }
@@ -27,9 +26,8 @@ namespace SchoolManagementSystem
             InitializeComponent();
 
             txtSubjectCode.Enabled = false;
-            this.SubjectCode = subjectCode;
             this.Text = "EDIT-SUBJECT";
-            SetSubjectInformation();
+            SetSubjectInformation(subjectCode);
         }
 
         public FrmAddSubject()
@@ -51,19 +49,21 @@ namespace SchoolManagementSystem
             
             if (this.Text.Contains("ADD"))
             {
-                query = string.Format("INSERT INTO Subject VALUES('{0}', '{1}', '{2}', '{3}')",
-                        txtSubjectCode.Text, txtDescription.Text, cmbGradeLevel.Text, active);
+                query = string.Format("INSERT INTO Subject VALUES('{0}', '{1}', {2}, '{3}', '{4}', '{5}')",
+                        txtSubjectCode.Text, txtDescription.Text, lblGradeLevelID.Text, dtTimeFrom.Value,
+                        dtTimeTo.Value, active);
                 UpdateDatabase(query);
                 return;
             }
 
             else if (this.Text.Contains("EDIT"))
             {
-                query = string.Format("UPDATE Subject SET Description = '{0}', GradeLevel = '{1}', Active = '{2}' " +
-                "WHERE SubjectCode = {3}", txtDescription.Text, cmbGradeLevel.Text, active, txtSubjectCode.Text);
+                query = string.Format("UPDATE Subject SET Description = '{0}', GradeLevelID = {1}, " + 
+                    "TimeFrom = '{2}', TimeTo = '{3}', Active = '{4}' WHERE SubjectCode = '{5}'", 
+                    txtDescription.Text, lblGradeLevelID.Text, dtTimeFrom.Value, dtTimeTo.Value,
+                    active, txtSubjectCode.Text);
                 UpdateDatabase(query);
             }
-
           }
 
         private void UpdateDatabase(string query)
@@ -76,9 +76,9 @@ namespace SchoolManagementSystem
             Sqlconn.Close();
         }
 
-        private void SetSubjectInformation()
+        private void SetSubjectInformation(string subjectCode)
         {
-            string query = string.Format("SELECT * FROM Subject WHERE SubjectCode = '{0}'", this.SubjectCode);
+            string query = string.Format("SELECT * FROM Subject WHERE SubjectCode = '{0}'", subjectCode);
             Sqlconn = new SqlConnection(connectionString);
             Sqlconn.Open();
 
@@ -90,7 +90,9 @@ namespace SchoolManagementSystem
                 txtSubjectCode.Text = sqlReader[0].ToString();
                 txtDescription.Text = sqlReader[1].ToString();
                 cmbGradeLevel.Text = sqlReader[2].ToString();
-                chkActive.Checked = sqlReader[3].ToString() == "True" ? true : false;
+                dtTimeFrom.Value = Convert.ToDateTime(sqlReader[3].ToString());
+                dtTimeTo.Value = Convert.ToDateTime(sqlReader[4].ToString());
+                chkActive.Checked = sqlReader[5].ToString() == "True" ? true : false;
             }
         }
 
@@ -111,6 +113,18 @@ namespace SchoolManagementSystem
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string query = "SELECT GradeLevelID FROM GradeLevel WHERE Description = '"+cmbGradeLevel.Text+"'";
+            
+            Sqlconn = new SqlConnection(connectionString);
+            Sqlconn.Open();
+
+            Sqlcomm = new SqlCommand(query, Sqlconn);
+            lblGradeLevelID .Text = Sqlcomm.ExecuteScalar().ToString();
+            Sqlconn.Close();
         }
     }
 }
