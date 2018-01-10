@@ -41,3 +41,7 @@ C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSy
 C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.FrmAddStudentPersonalInfo.resources
 C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Forms.FrmAddStudentRecord.resources
 C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Forms.FrmStudentRecord.resources
+C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Forms.FrmBrowse.resources
+C:\Users\Jeremy\Documents\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Forms.FrmPayment.resources
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Forms.FrmBrowse.resources
+C:\Users\Jeremy\Desktop\SchoolManagementSystem_VisualStudio\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.Forms.FrmPayment.resources

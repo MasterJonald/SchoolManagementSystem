@@ -85,6 +85,7 @@
             // btnEnrollAndSave
             // 
             this.btnEnrollAndSave.BackColor = System.Drawing.Color.Red;
+            this.btnEnrollAndSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnEnrollAndSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnrollAndSave.ForeColor = System.Drawing.Color.White;
             this.btnEnrollAndSave.Location = new System.Drawing.Point(409, 499);
@@ -93,6 +94,7 @@
             this.btnEnrollAndSave.TabIndex = 11;
             this.btnEnrollAndSave.Text = "Enroll";
             this.btnEnrollAndSave.UseVisualStyleBackColor = false;
+            this.btnEnrollAndSave.Click += new System.EventHandler(this.btnEnrollAndSave_Click);
             // 
             // btnBrowseStudent
             // 
@@ -102,6 +104,7 @@
             this.btnBrowseStudent.TabIndex = 12;
             this.btnBrowseStudent.Text = "...";
             this.btnBrowseStudent.UseVisualStyleBackColor = true;
+            this.btnBrowseStudent.Click += new System.EventHandler(this.btnBrowseStudent_Click);
             // 
             // cmbGradeLevel
             // 
@@ -265,6 +268,7 @@
             this.btnCancel.TabIndex = 30;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lblSchoolYear
             // 

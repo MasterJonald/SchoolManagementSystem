@@ -47,7 +47,12 @@ namespace SchoolManagementSystem.Forms
             string studentNumber = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value.ToString();
 
             FrmAddStudentRecord frmAddStudentRecord = new FrmAddStudentRecord(recordNo, studentNumber);
-            frmAddStudentRecord.ShowDialog(this);
+            DialogResult dr = frmAddStudentRecord.ShowDialog(this);
+
+            if (dr == DialogResult.OK)
+            {
+                ViewStudentRecord();
+            }
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -56,7 +61,12 @@ namespace SchoolManagementSystem.Forms
             string studentNumber = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value.ToString();
 
             FrmAddStudentRecord frmAddStudentRecord = new FrmAddStudentRecord(recordNo, studentNumber);
-            frmAddStudentRecord.ShowDialog(this);
+            DialogResult dr = frmAddStudentRecord.ShowDialog(this);
+
+            if (dr == DialogResult.OK)
+            {
+                ViewStudentRecord();
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)

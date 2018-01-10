@@ -9,6 +9,7 @@ namespace SchoolManagementSystem
 {
     public static class GlobalVariable
     {
-        public static string ConnectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
+        public static String ConnectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
+        public static String SchoolYear = ConfigurationManager.AppSettings["SchoolYear"].ToString();
     }
 }

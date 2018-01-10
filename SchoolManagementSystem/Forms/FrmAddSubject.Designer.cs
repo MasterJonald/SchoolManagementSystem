@@ -42,6 +42,8 @@
             this.dtTimeFrom = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtTeachersName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtDescription
@@ -54,7 +56,7 @@
             // btnSave
             // 
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.btnSave.Location = new System.Drawing.Point(24, 275);
+            this.btnSave.Location = new System.Drawing.Point(14, 325);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(85, 29);
             this.btnSave.TabIndex = 6;
@@ -109,7 +111,7 @@
             // 
             this.chkActive.Checked = true;
             this.chkActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkActive.Location = new System.Drawing.Point(20, 240);
+            this.chkActive.Location = new System.Drawing.Point(17, 293);
             this.chkActive.Name = "chkActive";
             this.chkActive.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkActive.Size = new System.Drawing.Size(85, 17);
@@ -121,7 +123,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(115, 275);
+            this.btnCancel.Location = new System.Drawing.Point(105, 325);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(85, 29);
             this.btnCancel.TabIndex = 7;
@@ -180,11 +182,29 @@
             this.label4.TabIndex = 18;
             this.label4.Text = "Time To:";
             // 
+            // txtTeachersName
+            // 
+            this.txtTeachersName.Location = new System.Drawing.Point(17, 251);
+            this.txtTeachersName.Name = "txtTeachersName";
+            this.txtTeachersName.Size = new System.Drawing.Size(155, 20);
+            this.txtTeachersName.TabIndex = 19;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 232);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Teacher\'s Name";
+            // 
             // FrmAddSubject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 350);
+            this.ClientSize = new System.Drawing.Size(284, 358);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtTeachersName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtTimeFrom);
@@ -223,5 +243,7 @@
         private System.Windows.Forms.DateTimePicker dtTimeFrom;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtTeachersName;
+        private System.Windows.Forms.Label label5;
     }
 }

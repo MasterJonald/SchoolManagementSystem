@@ -54,6 +54,12 @@
     <Compile Include="Forms\FrmBackground.Designer.cs">
       <DependentUpon>FrmBackground.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmBrowse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBrowse.Designer.cs">
+      <DependentUpon>FrmBrowse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmEncodeGrades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +71,12 @@
     </Compile>
     <Compile Include="Forms\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmPayment.Designer.cs">
+      <DependentUpon>FrmPayment.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmStudentPersonalInfo.cs">
       <SubType>Form</SubType>
@@ -108,11 +120,17 @@
     <EmbeddedResource Include="Forms\FrmBackground.resx">
       <DependentUpon>FrmBackground.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmBrowse.resx">
+      <DependentUpon>FrmBrowse.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmEncodeGrades.resx">
       <DependentUpon>FrmEncodeGrades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmPayment.resx">
+      <DependentUpon>FrmPayment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmStudentPersonalInfo.resx">
       <DependentUpon>FrmStudentPersonalInfo.cs</DependentUpon>

@@ -33,7 +33,10 @@ namespace SchoolManagementSystem
         private void ViewSubject()
         {
             string query = "SELECT SubjectCode, Description, GradeLevelID," +
-                "TimeFrom, TimeTo, CASE WHEN Active = 1 THEN 'Active' ELSE 'Inactive' END AS Active  FROM Subject";
+                "CONVERT(VARCHAR(4), TimeFrom, 100) + ' ' + RIGHT(CONVERT(VARCHAR(30), TimeFrom, 9),2) + ' - ' + " +
+                "CONVERT(VARCHAR(4), TimeTo, 100) + ' ' + RIGHT(CONVERT(VARCHAR(30), TimeTo, 9),2) As Time, " + 
+                "TeachersName, CASE WHEN Active = 1 THEN 'Active' ELSE 'Inactive' END AS Active  FROM Subject";
+
             DataTable dataTable = new DataTable();
 
             Sqlconn = new SqlConnection(GlobalVariable.ConnectionString);
@@ -46,7 +49,6 @@ namespace SchoolManagementSystem
             Sqlconn.Close();
         }
         
-
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string subjectCode = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString();
