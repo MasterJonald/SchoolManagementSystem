@@ -125,8 +125,10 @@ namespace SchoolManagementSystem.Forms
             else if (rbtnPerStudent.Checked)
             {
                 query = string.Format("SELECT StudentRecord.RecordNo, Subject.SubjectCode, Subject.Description, " +
-                    "FirstQuarter AS [1st Quarter], SecondQuarter AS [2nd Quarter], " +
-                    "ThirdQuarter AS [3rd Quarter], FourthQuarter AS [4th Quarter] FROM StudentRecord " +
+                    "CASE WHEN FirstQuarter <> 0 THEN FirstQuarter ELSE NULL END AS [1st Quarter], " +
+                    "CASE WHEN SecondQuarter <> 0 THEN SecondQuarter ELSE NULL END AS [2nd Quarter], " +
+                    "CASE WHEN ThirdQuarter <> 0 THEN ThirdQuarter ELSE NULL END AS [3rd Quarter], " +
+                    "CASE WHEN FourthQuarter <> 0 THEN FourthQuarter ELSE NULL END AS [4th Quarter] FROM StudentRecord " +
                     "INNER JOIN StudentPersonalInfo ON StudentRecord.StudentNo = StudentPersonalInfo.StudentNo " +
                     "INNER JOIN GradeLevel ON GradeLevel.GradeLevelID = StudentRecord.GradeLevelID " +
                     "INNER JOIN Subject ON Subject.GradeLevelID = GradeLevel.GradeLevelID " +
@@ -200,6 +202,23 @@ namespace SchoolManagementSystem.Forms
             }
         }
 
+        private bool CheckIfRecordExists(string query)
+        {
+            Sqlconn = new SqlConnection(GlobalVariable.ConnectionString);
+            Sqlconn.Open();
+
+            Sqlcomm = new SqlCommand(query, Sqlconn);
+            int count = Convert.ToInt16(Sqlcomm.ExecuteScalar());
+            Sqlconn.Close();
+
+            if (count == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         private void SaveGradePerGradeLevel()
         {
             string recordNo;
@@ -225,9 +244,22 @@ namespace SchoolManagementSystem.Forms
                 fourthQuarter = dataGridView1.Rows[x].Cells[6].Value.ToString() != "" ?
                     Convert.ToDouble(dataGridView1.Rows[x].Cells[6].Value) : 0;
 
-                query = string.Format("INSERT INTO StudentGrade VALUES ({0}, '{1}', '{2}', '{3}', {4}, {5}, {6}, {7})",
-                    recordNo, studentNo, lblSubjectCode.Text, cmbSubject.Text, firstQuarter, secondQuarter, thirdQuarter, fourthQuarter);
+                query = string.Format("SELECT COUNT(1) FROM StudentGrade WHERE StudentRecordNo = {0} " +
+                    "AND SubjectCode = '{1}'", recordNo, lblSubjectCode.Text);
 
+                if (CheckIfRecordExists(query) == true)
+                {
+                    query = string.Format("UPDATE StudentGrade SET FirstQuarter = {0}, SecondQuarter = {1}," +
+                        "ThirdQuarter = {2}, FourthQuarter = {3} WHERE StudentRecordNo = {4} AND SubjectCode = {5}",
+                        firstQuarter, secondQuarter, thirdQuarter, fourthQuarter, recordNo, lblSubjectCode.Text);
+                }
+
+                else
+                {
+                    query = string.Format("INSERT INTO StudentGrade VALUES ({0}, '{1}', '{2}', '{3}', {4}, {5}, {6}, {7})",
+                        recordNo, studentNo, lblSubjectCode.Text, cmbSubject.Text, firstQuarter, secondQuarter, thirdQuarter, fourthQuarter);
+                }
+                
                 UpdateDatabase(query);
             }
         }
@@ -259,8 +291,24 @@ namespace SchoolManagementSystem.Forms
                 fourthQuarter = dataGridView1.Rows[x].Cells[6].Value.ToString() != "" ?
                     Convert.ToDouble(dataGridView1.Rows[x].Cells[6].Value) : 0;
 
-                query = string.Format("INSERT INTO StudentGrade VALUES ({0}, '{1}', '{2}', '{3}', {4}, {5}, {6}, {7})",
-                    recordNo, txtStudentNumber.Text, subjectCode, cmbSubject.Text, firstQuarter, secondQuarter, thirdQuarter, fourthQuarter);
+                query = string.Format("SELECT COUNT(1) FROM StudentGrade WHERE StudentRecordNo = {0} " +
+                    "AND SubjectCode = '{1}'", recordNo, subjectCode);
+
+                if (CheckIfRecordExists(query) == true)
+                {
+                    query = string.Format("UPDATE StudentGrade SET FirstQuarter = {0}, SecondQuarter = {1}," +
+                        "ThirdQuarter = {2}, FourthQuarter = {3} WHERE StudentRecordNo = {4} AND SubjectCode = {5}",
+                        firstQuarter, secondQuarter, thirdQuarter, fourthQuarter, recordNo, subjectCode);
+                }
+
+                else
+                {
+                    query = string.Format("INSERT INTO StudentGrade VALUES ({0}, '{1}', '{2}', '{3}', {4}, {5}, {6}, {7})",
+                        recordNo, txtStudentNumber.Text, subjectCode, cmbSubject.Text, firstQuarter, secondQuarter, thirdQuarter, fourthQuarter);
+                }
+
+
+
 
                 UpdateDatabase(query);
             }
