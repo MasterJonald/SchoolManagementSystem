@@ -36,14 +36,14 @@
             this.cmbGradeLevel = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtStudentName = new System.Windows.Forms.TextBox();
             this.dtPickerDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.studentImage = new System.Windows.Forms.PictureBox();
-            this.lblTuitionFee = new System.Windows.Forms.Label();
+            this.lblTotalBalance = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cmbGender = new System.Windows.Forms.ComboBox();
@@ -52,15 +52,19 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblSchoolYear = new System.Windows.Forms.Label();
             this.lblGradeLevelID = new System.Windows.Forms.Label();
+            this.cmbStudentType = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.studentImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtStudentNumber
             // 
+            this.txtStudentNumber.Enabled = false;
             this.txtStudentNumber.Location = new System.Drawing.Point(112, 86);
             this.txtStudentNumber.Name = "txtStudentNumber";
-            this.txtStudentNumber.Size = new System.Drawing.Size(203, 20);
+            this.txtStudentNumber.Size = new System.Drawing.Size(201, 20);
             this.txtStudentNumber.TabIndex = 4;
             // 
             // lblStudentInformation
@@ -98,7 +102,7 @@
             // 
             // btnBrowseStudent
             // 
-            this.btnBrowseStudent.Location = new System.Drawing.Point(306, 85);
+            this.btnBrowseStudent.Location = new System.Drawing.Point(315, 86);
             this.btnBrowseStudent.Name = "btnBrowseStudent";
             this.btnBrowseStudent.Size = new System.Drawing.Size(25, 20);
             this.btnBrowseStudent.TabIndex = 12;
@@ -127,19 +131,25 @@
             // cmbStatus
             // 
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(452, 113);
+            this.cmbStatus.Items.AddRange(new object[] {
+            "ENROLLED",
+            "FAILED",
+            "LFR"});
+            this.cmbStatus.Location = new System.Drawing.Point(452, 143);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(121, 21);
             this.cmbStatus.TabIndex = 15;
+            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
             // 
-            // label1
+            // lblStatus
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(409, 113);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Status";
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(406, 148);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(37, 13);
+            this.lblStatus.TabIndex = 16;
+            this.lblStatus.Text = "Status";
+            this.lblStatus.Click += new System.EventHandler(this.label1_Click);
             // 
             // label3
             // 
@@ -152,6 +162,7 @@
             // 
             // txtStudentName
             // 
+            this.txtStudentName.Enabled = false;
             this.txtStudentName.Location = new System.Drawing.Point(112, 113);
             this.txtStudentName.Name = "txtStudentName";
             this.txtStudentName.Size = new System.Drawing.Size(219, 20);
@@ -160,6 +171,7 @@
             // dtPickerDateOfBirth
             // 
             this.dtPickerDateOfBirth.CustomFormat = "MMMMdd, yyyy";
+            this.dtPickerDateOfBirth.Enabled = false;
             this.dtPickerDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtPickerDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtPickerDateOfBirth.Location = new System.Drawing.Point(112, 167);
@@ -198,26 +210,26 @@
             this.studentImage.TabIndex = 20;
             this.studentImage.TabStop = false;
             // 
-            // lblTuitionFee
+            // lblTotalBalance
             // 
-            this.lblTuitionFee.AutoSize = true;
-            this.lblTuitionFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTuitionFee.ForeColor = System.Drawing.Color.Red;
-            this.lblTuitionFee.Location = new System.Drawing.Point(455, 148);
-            this.lblTuitionFee.Name = "lblTuitionFee";
-            this.lblTuitionFee.Size = new System.Drawing.Size(32, 13);
-            this.lblTuitionFee.TabIndex = 23;
-            this.lblTuitionFee.Text = "0.00";
+            this.lblTotalBalance.AutoSize = true;
+            this.lblTotalBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalBalance.ForeColor = System.Drawing.Color.Red;
+            this.lblTotalBalance.Location = new System.Drawing.Point(472, 174);
+            this.lblTotalBalance.Name = "lblTotalBalance";
+            this.lblTotalBalance.Size = new System.Drawing.Size(32, 13);
+            this.lblTotalBalance.TabIndex = 23;
+            this.lblTotalBalance.Text = "0.00";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(378, 148);
+            this.label7.Location = new System.Drawing.Point(372, 174);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 13);
+            this.label7.Size = new System.Drawing.Size(94, 13);
             this.label7.TabIndex = 22;
-            this.label7.Text = "Tuition Fee";
+            this.label7.Text = "Total Balance: ";
             // 
             // label8
             // 
@@ -231,7 +243,11 @@
             // 
             // cmbGender
             // 
+            this.cmbGender.Enabled = false;
             this.cmbGender.FormattingEnabled = true;
+            this.cmbGender.Items.AddRange(new object[] {
+            "MALE",
+            "FEMALE"});
             this.cmbGender.Location = new System.Drawing.Point(113, 140);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(121, 21);
@@ -256,6 +272,7 @@
             this.btnPrintPreview.TabIndex = 29;
             this.btnPrintPreview.Text = "Print Preview";
             this.btnPrintPreview.UseVisualStyleBackColor = false;
+            this.btnPrintPreview.Click += new System.EventHandler(this.btnPrintPreview_Click);
             // 
             // btnCancel
             // 
@@ -290,17 +307,52 @@
             this.lblGradeLevelID.TabIndex = 32;
             this.lblGradeLevelID.Text = "GLID";
             // 
+            // cmbStudentType
+            // 
+            this.cmbStudentType.FormattingEnabled = true;
+            this.cmbStudentType.Items.AddRange(new object[] {
+            "OLD STUDENT",
+            "NEW STUDENT",
+            "TRANSFEREE"});
+            this.cmbStudentType.Location = new System.Drawing.Point(452, 113);
+            this.cmbStudentType.Name = "cmbStudentType";
+            this.cmbStudentType.Size = new System.Drawing.Size(121, 21);
+            this.cmbStudentType.TabIndex = 34;
+            this.cmbStudentType.SelectedIndexChanged += new System.EventHandler(this.cmbStudentType_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(372, 116);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 13);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Student Type";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(56, 30);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(25, 20);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmAddStudentRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(760, 548);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cmbStudentType);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblGradeLevelID);
             this.Controls.Add(this.lblSchoolYear);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnPrintPreview);
-            this.Controls.Add(this.lblTuitionFee);
+            this.Controls.Add(this.lblTotalBalance);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cmbGender);
@@ -311,7 +363,7 @@
             this.Controls.Add(this.studentImage);
             this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.txtStudentName);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbGradeLevel);
             this.Controls.Add(this.label2);
@@ -341,14 +393,14 @@
         private System.Windows.Forms.ComboBox cmbGradeLevel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbStatus;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtStudentName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtPickerDateOfBirth;
         private System.Windows.Forms.PictureBox studentImage;
-        private System.Windows.Forms.Label lblTuitionFee;
+        private System.Windows.Forms.Label lblTotalBalance;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbGender;
@@ -357,5 +409,8 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblSchoolYear;
         private System.Windows.Forms.Label lblGradeLevelID;
+        private System.Windows.Forms.ComboBox cmbStudentType;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
     }
 }

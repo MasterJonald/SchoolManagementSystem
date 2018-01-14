@@ -43,7 +43,7 @@ namespace SchoolManagementSystem.Forms
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            string recordNo = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString();
+            int recordNo = (int)dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value;
             string studentNumber = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value.ToString();
 
             FrmAddStudentRecord frmAddStudentRecord = new FrmAddStudentRecord(recordNo, studentNumber);
@@ -57,7 +57,7 @@ namespace SchoolManagementSystem.Forms
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string recordNo = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString();
+            int recordNo = (int)dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value;
             string studentNumber = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value.ToString();
 
             FrmAddStudentRecord frmAddStudentRecord = new FrmAddStudentRecord(recordNo, studentNumber);

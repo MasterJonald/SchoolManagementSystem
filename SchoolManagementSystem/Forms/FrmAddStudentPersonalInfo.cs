@@ -84,7 +84,7 @@ namespace SchoolManagementSystem
 
                 query = string.Format("INSERT INTO StudentPersonalInfo VALUES ('{0}', '{1}', '{2}','{3}', '{4}', '{5}','{6}', '{7}', '{8}')",
                      txtStudentNumber.Text, txtFirstName.Text, txtLastName.Text, txtMiddleName.Text,
-                     txtAddress.Text, cmbGender.Text, dateTimePicker1.Value, 
+                     txtAddress.Text, cmbGender.Text.Trim(), dateTimePicker1.Value, 
                      txtPlaceOfBirth.Text, DestinationImagePath);
 
                 UpdateDatabase(query);
@@ -95,10 +95,10 @@ namespace SchoolManagementSystem
                 CopyFileToNewLocation();
 
                 query = string.Format("UPDATE StudentPersonalInfo SET FirstName = '{0}', LastName = '{1}'," +
-                    "MiddleName = '{2}', Address = '{3}', Gender = '{4}', DateOfBirth = '{5}', PlaceOfBirth = '{6}', "+
-                    "ImagePath = '{7}' WHERE StudentNo = '{8}'", 
-                    txtFirstName.Text, txtLastName.Text, txtMiddleName .Text, txtAddress.Text,
-                    cmbGender.Text, dateTimePicker1.Value, txtPlaceOfBirth.Text, DestinationImagePath, 
+                    "MiddleName = '{2}', Address = '{3}', Gender = '{4}', DateOfBirth = '{5}', PlaceOfBirth = '{6}', " +
+                    "ImagePath = '{7}' WHERE StudentNo = '{8}'",
+                    txtFirstName.Text, txtLastName.Text, txtMiddleName.Text, txtAddress.Text,
+                    cmbGender.Text.Trim(), dateTimePicker1.Value, txtPlaceOfBirth.Text, DestinationImagePath, 
                     txtStudentNumber.Text);
                 UpdateDatabase(query);
             }

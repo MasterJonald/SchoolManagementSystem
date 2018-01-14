@@ -78,6 +78,12 @@
     <Compile Include="Forms\FrmPayment.Designer.cs">
       <DependentUpon>FrmPayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmStudentPaymentAndBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmStudentPaymentAndBalance.Designer.cs">
+      <DependentUpon>FrmStudentPaymentAndBalance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmStudentPersonalInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmPayment.resx">
       <DependentUpon>FrmPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmStudentPaymentAndBalance.resx">
+      <DependentUpon>FrmStudentPaymentAndBalance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmStudentPersonalInfo.resx">
       <DependentUpon>FrmStudentPersonalInfo.cs</DependentUpon>
