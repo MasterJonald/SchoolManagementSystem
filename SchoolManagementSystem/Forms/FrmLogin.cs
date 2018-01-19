@@ -23,8 +23,6 @@ namespace SchoolManagementSystem.Forms
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        private static string connectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
-
         SqlConnection sqlconn { get; set; }
         SqlCommand sqlcomm { get; set; }
         public FrmLogin()
@@ -42,7 +40,7 @@ namespace SchoolManagementSystem.Forms
             //Palitan ng SQL Parameter para hindi prone sa SQL Injection
             string query = "SELECT * FROM Admin WHERE UserName = @userName and Password = @password";
 
-            sqlconn = new SqlConnection(connectionString);
+            sqlconn = new SqlConnection(GlobalVariable.ConnectionString);
             sqlconn.Open();
 
             var userNameParam = new SqlParameter("userName", SqlDbType.VarChar);

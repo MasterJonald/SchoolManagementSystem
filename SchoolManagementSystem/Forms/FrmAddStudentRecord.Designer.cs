@@ -139,7 +139,6 @@
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(121, 21);
             this.cmbStatus.TabIndex = 15;
-            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
             // 
             // lblStatus
             // 
@@ -149,7 +148,6 @@
             this.lblStatus.Size = new System.Drawing.Size(37, 13);
             this.lblStatus.TabIndex = 16;
             this.lblStatus.Text = "Status";
-            this.lblStatus.Click += new System.EventHandler(this.label1_Click);
             // 
             // label3
             // 
@@ -272,7 +270,6 @@
             this.btnPrintPreview.TabIndex = 29;
             this.btnPrintPreview.Text = "Print Preview";
             this.btnPrintPreview.UseVisualStyleBackColor = false;
-            this.btnPrintPreview.Click += new System.EventHandler(this.btnPrintPreview_Click);
             // 
             // btnCancel
             // 

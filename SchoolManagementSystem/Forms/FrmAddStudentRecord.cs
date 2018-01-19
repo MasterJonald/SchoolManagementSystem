@@ -24,13 +24,12 @@ namespace SchoolManagementSystem.Forms
         private SqlCommand Sqlcomm { get; set; }
         
         //For updating records
-        public FrmAddStudentRecord(int recordNo, string studentNumber)
+        public FrmAddStudentRecord(int recordNo)
         {
             InitializeComponent();
             this.Text = "EDIT-STUDENT";
             this.RecordNo = recordNo;
             btnEnrollAndSave.Text = "Save";
-            txtStudentNumber.Text = studentNumber;
 
             btnBrowseStudent.Enabled = false;
 
@@ -89,16 +88,19 @@ namespace SchoolManagementSystem.Forms
             while (sqlReader.Read())
             {
                 txtStudentNumber.Text = sqlReader[0].ToString();
-                txtStudentName.Text = string.Format("{0} {1} {2}", sqlReader[1].ToString(), sqlReader[2].ToString(), 
-                    "," + sqlReader[3].ToString());
-                cmbGender.Text = sqlReader[4].ToString();
-                dtPickerDateOfBirth.Value = Convert.ToDateTime(sqlReader[5].ToString());
-                studentImage.ImageLocation = Application.StartupPath + sqlReader[6].ToString();
-                lblGradeLevelID.Text = sqlReader[7].ToString();
+                txtStudentName.Text = string.Format("{0}, {1} {2}", sqlReader["LastName"].ToString(), sqlReader["FirstName"].ToString(), 
+                    "," + sqlReader["MiddleName"].ToString());
+                cmbGender.Text = sqlReader["Gender"].ToString();
+                dtPickerDateOfBirth.Value = Convert.ToDateTime(sqlReader["DateOfBirth"].ToString());
+                studentImage.ImageLocation = Application.StartupPath + sqlReader["ImagePath"].ToString();
+                lblGradeLevelID.Text = sqlReader["GradeLevelID"].ToString();
                 cmbGradeLevel.Text = GetOneData("SELECT Description FROM GradeLevel WHERE GradeLevelID = '"+lblGradeLevelID.Text+"'");
-                cmbStatus.Text = sqlReader[8].ToString();
-                cmbStudentType.Text = sqlReader[9].ToString();
+                cmbStatus.Text = sqlReader["Status"].ToString();
+                cmbStudentType.Text = sqlReader["StudentType"].ToString();
             }
+
+            sqlReader.Close();
+            Sqlconn.Close();
         }
 
         private void cmbGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
@@ -183,19 +185,20 @@ namespace SchoolManagementSystem.Forms
 
             while (sqlReader.Read())
             {
-                txtStudentNumber.Text = sqlReader[0].ToString();
-                txtStudentName.Text = string.Format("{0} {1} {2}", sqlReader[1].ToString(), "," + sqlReader[2].ToString(),
-                    sqlReader[3].ToString());
-                cmbGender.Text = sqlReader[4].ToString();
-                dtPickerDateOfBirth.Value = Convert.ToDateTime(sqlReader[5].ToString());
-                studentImage.ImageLocation = Application.StartupPath + sqlReader[6].ToString();
+                txtStudentNumber.Text = sqlReader["StudentNo"].ToString();
+                txtStudentName.Text = string.Format("{0}, {1} {2}", sqlReader["LastName"].ToString(), 
+                    sqlReader["FirstName"].ToString(), sqlReader["MiddleName"].ToString());
+                cmbGender.Text = sqlReader["Gender"].ToString();
+                dtPickerDateOfBirth.Value = Convert.ToDateTime(sqlReader["DateOfBirth"].ToString());
+                studentImage.ImageLocation = Application.StartupPath + sqlReader["ImagePath"].ToString();
             }
+
+            sqlReader.Close();
+            Sqlconn.Close();
         }
 
         private void btnEnrollAndSave_Click(object sender, EventArgs e)
         {
-            List<string> queries = new List<string>();
-
             if (this.Text.Contains("ENROLL"))
             {
                 EnrollStudent();
@@ -228,7 +231,7 @@ namespace SchoolManagementSystem.Forms
 
                 if (cmbStatus.Text == "ENROLLED")
                 {
-                    string updateBalanceTuitionFee = string.Format("UPDATE Balance SET Balance = {0} " +
+                    string updateBalanceTuitionFee = string.Format("UPDATE Balance SET Amount = {0} " +
                             "WHERE StudentRecordNo = {1} AND Description = 'TUITION FEE' ",
                             this.TuitionFee, this.RecordNo);
                     Sqlcomm.CommandText = updateBalanceTuitionFee;
@@ -251,8 +254,8 @@ namespace SchoolManagementSystem.Forms
 
                         if (CheckIfOldEntranceFeeExists(query) == false)
                         {
-                            string inserStudentEntranceFee = string.Format("INSERT INTO Balance VALUES ({0}, '{1}', {2}, '{3}', NULL, NULL, NULL)",
-                                this.RecordNo, "ENTRANCE FEE", EntranceFee, DateTime.Now.ToShortDateString());
+                            string inserStudentEntranceFee = string.Format("INSERT INTO Balance VALUES ({0}, '{1}', '{2}', {3}, 0, NULL, NULL)",
+                                this.RecordNo, "ENTRANCE FEE", DateTime.Now.ToShortDateString(), this.EntranceFee);
                             Sqlcomm.CommandText = inserStudentEntranceFee;
                             Sqlcomm.ExecuteNonQuery();
                         }
@@ -313,16 +316,16 @@ namespace SchoolManagementSystem.Forms
                 this.RecordNo = Convert.ToInt32(Sqlcomm.ExecuteScalar());
 
                 //Use the recordNo variable, and insert student balance with Tuition Fee
-                string insertStudentBalance = string.Format("INSERT INTO Balance VALUES ({0}, '{1}', {2}, '{3}', NULL, NULL, NULL)",
-                        this.RecordNo, "TUITION FEE", TuitionFee, DateTime.Now.ToShortDateString());
+                string insertStudentBalance = string.Format("INSERT INTO Balance VALUES ({0}, '{1}', '{2}', {3}, 0, NULL, NULL)",
+                        this.RecordNo, "TUITION FEE", DateTime.Now.ToShortDateString(), this.TuitionFee);
                 Sqlcomm.CommandText = insertStudentBalance;
                 Sqlcomm.ExecuteNonQuery();
 
                 if (EntranceFee != 0)
                 {
                     //Use the recordNo variable, and insert student balance with Entrance Fee
-                    string inserStudentEntranceFee = string.Format("INSERT INTO Balance VALUES ({0}, '{1}', {2}, '{3}', NULL, NULL, NULL)",
-                        this.RecordNo, "ENTRANCE FEE", EntranceFee, DateTime.Now.ToShortDateString());
+                    string inserStudentEntranceFee = string.Format("INSERT INTO Balance VALUES ({0}, '{1}', '{2}', {3}, 0, NULL, NULL)",
+                        this.RecordNo, "ENTRANCE FEE", DateTime.Now.ToShortDateString(), this.EntranceFee);
                     Sqlcomm.CommandText = inserStudentEntranceFee;
                     Sqlcomm.ExecuteNonQuery();
                 }
@@ -356,16 +359,6 @@ namespace SchoolManagementSystem.Forms
             this.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void cmbStudentType_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetEntranceFee();
@@ -376,11 +369,6 @@ namespace SchoolManagementSystem.Forms
             EntranceFee = cmbStudentType.Text == "NEW STUDENT" || cmbStudentType.Text == "TRANSFEREE" ? 1000.00 : 0.00;
             this.TotalBalance = this.TuitionFee + this.EntranceFee;
             lblTotalBalance.Text = TotalBalance.ToString();
-        }
-
-        private void btnPrintPreview_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)

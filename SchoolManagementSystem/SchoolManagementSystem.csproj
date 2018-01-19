@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseHandler.cs" />
     <Compile Include="Forms\FrmBackground.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,11 +71,23 @@
     <Compile Include="Forms\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmMainMenu.Designer.cs">
+      <DependentUpon>FrmMainMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmPayment.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmPayment.Designer.cs">
       <DependentUpon>FrmPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmRemarks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmRemarks.Designer.cs">
+      <DependentUpon>FrmRemarks.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmStudentPaymentAndBalance.cs">
       <SubType>Form</SubType>
@@ -135,8 +146,14 @@
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMainMenu.resx">
+      <DependentUpon>FrmMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmPayment.resx">
       <DependentUpon>FrmPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmRemarks.resx">
+      <DependentUpon>FrmRemarks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmStudentPaymentAndBalance.resx">
       <DependentUpon>FrmStudentPaymentAndBalance.cs</DependentUpon>

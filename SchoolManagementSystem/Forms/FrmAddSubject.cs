@@ -16,8 +16,6 @@ namespace SchoolManagementSystem
 {
     public partial class FrmAddSubject : Form
     {
-        private static string connectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
-
         private SqlConnection Sqlconn { get; set; }
         private SqlCommand Sqlcomm { get; set; }
         
@@ -73,7 +71,7 @@ namespace SchoolManagementSystem
 
         private void UpdateDatabase(string query)
         {
-            Sqlconn = new SqlConnection(connectionString);
+            Sqlconn = new SqlConnection(GlobalVariable.ConnectionString);
             Sqlconn.Open();
 
             Sqlcomm = new SqlCommand(query, Sqlconn);
@@ -84,7 +82,7 @@ namespace SchoolManagementSystem
         private void SetSubjectInformation(string subjectCode)
         {
             string query = string.Format("SELECT * FROM Subject WHERE SubjectCode = '{0}'", subjectCode);
-            Sqlconn = new SqlConnection(connectionString);
+            Sqlconn = new SqlConnection(GlobalVariable.ConnectionString);
             Sqlconn.Open();
 
             Sqlcomm = new SqlCommand(query, Sqlconn);
@@ -107,7 +105,7 @@ namespace SchoolManagementSystem
 
         private void PopulateComboBoxWithGradeLevel()
         {
-            Sqlconn = new SqlConnection(connectionString);
+            Sqlconn = new SqlConnection(GlobalVariable.ConnectionString);
             Sqlconn.Open();
 
             Sqlcomm = new SqlCommand("SELECT Description FROM GradeLevel", Sqlconn);
@@ -131,7 +129,7 @@ namespace SchoolManagementSystem
         {
             string query = "SELECT GradeLevelID FROM GradeLevel WHERE Description = '"+cmbGradeLevel.Text+"'";
             
-            Sqlconn = new SqlConnection(connectionString);
+            Sqlconn = new SqlConnection(GlobalVariable.ConnectionString);
             Sqlconn.Open();
 
             Sqlcomm = new SqlCommand(query, Sqlconn);
@@ -143,7 +141,7 @@ namespace SchoolManagementSystem
         {
             string query = "SELECT Description FROM GradeLevel WHERE GradeLevelID = '" + lblGradeLevelID.Text + "'";
 
-            Sqlconn = new SqlConnection(connectionString);
+            Sqlconn = new SqlConnection(GlobalVariable.ConnectionString);
             Sqlconn.Open();
 
             Sqlcomm = new SqlCommand(query, Sqlconn);

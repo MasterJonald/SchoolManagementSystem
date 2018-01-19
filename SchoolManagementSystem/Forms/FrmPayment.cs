@@ -26,7 +26,7 @@ namespace SchoolManagementSystem.Forms
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            string query = string.Format("INSERT INTO Payment VALUES ({0}, '{1}', '{2}', '{3}', {4}, NULL, NULL, NULL)",
+            string query = string.Format("INSERT INTO Payment VALUES ({0}, '{1}', '{2}', '{3}', {4}, 0, NULL, NULL)",
                 this.RecordNo, cmbDescription.Text, cmbPaymentType.Text, DateTime.Now.ToShortDateString(), txtAmount.Text);
 
             Sqlconn = new SqlConnection(GlobalVariable.ConnectionString);

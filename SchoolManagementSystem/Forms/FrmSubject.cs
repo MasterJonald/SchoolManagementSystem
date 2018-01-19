@@ -16,8 +16,6 @@ namespace SchoolManagementSystem
 
     public partial class FrmSubject : Form
     {
-        //private static string connectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
-
         SqlConnection Sqlconn { get; set; }
 
         public FrmSubject()

@@ -28,7 +28,7 @@ namespace SchoolManagementSystem.Forms
 
         private void ViewStudentRecord()
         {
-            string query = "SELECT * FROM StudentRecord";
+            string query = "SELECT * FROM StudentRecord WHERE SchoolYear = "+GlobalVariable.SchoolYear+"";
             DataTable dataTable = new DataTable();
 
             sqlconn = new SqlConnection(GlobalVariable.ConnectionString);
@@ -44,9 +44,8 @@ namespace SchoolManagementSystem.Forms
         private void btnEdit_Click(object sender, EventArgs e)
         {
             int recordNo = (int)dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value;
-            string studentNumber = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value.ToString();
 
-            FrmAddStudentRecord frmAddStudentRecord = new FrmAddStudentRecord(recordNo, studentNumber);
+            FrmAddStudentRecord frmAddStudentRecord = new FrmAddStudentRecord(recordNo);
             DialogResult dr = frmAddStudentRecord.ShowDialog(this);
 
             if (dr == DialogResult.OK)
@@ -58,9 +57,8 @@ namespace SchoolManagementSystem.Forms
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int recordNo = (int)dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value;
-            string studentNumber = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value.ToString();
 
-            FrmAddStudentRecord frmAddStudentRecord = new FrmAddStudentRecord(recordNo, studentNumber);
+            FrmAddStudentRecord frmAddStudentRecord = new FrmAddStudentRecord(recordNo);
             DialogResult dr = frmAddStudentRecord.ShowDialog(this);
 
             if (dr == DialogResult.OK)
@@ -85,6 +83,19 @@ namespace SchoolManagementSystem.Forms
                 {
                     break;
                 }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int recordNo = (int)dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value;
+
+            FrmStudentPaymentAndBalance frmAddStudentRecord = new FrmStudentPaymentAndBalance(recordNo);
+            DialogResult dr = frmAddStudentRecord.ShowDialog(this);
+
+            if (dr == DialogResult.OK)
+            {
+                ViewStudentRecord();
             }
         }
     }

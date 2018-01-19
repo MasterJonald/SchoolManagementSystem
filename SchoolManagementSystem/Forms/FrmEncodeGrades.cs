@@ -134,13 +134,12 @@ namespace SchoolManagementSystem.Forms
                     "INNER JOIN Subject ON Subject.GradeLevelID = GradeLevel.GradeLevelID " +
                     "LEFT JOIN StudentGrade ON StudentGrade.StudentRecordNo = StudentRecord.RecordNo " +
                     "AND StudentGrade.SubjectCode = Subject.SubjectCode " +
-                    "WHERE StudentRecord.StudentNo = {0} And Subject.Active = 1 AND StudentRecord.SchoolYear = {1}",
+                    "WHERE StudentRecord.StudentNo = '{0}' And Subject.Active = 1 AND StudentRecord.SchoolYear = {1}",
                     txtStudentNumber.Text, Convert.ToInt16(GlobalVariable.SchoolYear));
 
                 ViewToDataGrid(query);
                 dataGridView1.Columns[0].Visible = false; //RecordNo
                 dataGridView1.Columns[1].Visible = false; //SubjectCode
-
             }
         }
 
@@ -160,8 +159,6 @@ namespace SchoolManagementSystem.Forms
 
         private void cmbSubject_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //cmbSubject.Items.Clear();
-
             string query = "SELECT SubjectCode FROM Subject WHERE Description = '" + cmbSubject.Text + "'";
 
             Sqlconn = new SqlConnection(GlobalVariable.ConnectionString);
@@ -306,10 +303,7 @@ namespace SchoolManagementSystem.Forms
                     query = string.Format("INSERT INTO StudentGrade VALUES ({0}, '{1}', '{2}', '{3}', {4}, {5}, {6}, {7})",
                         recordNo, txtStudentNumber.Text, subjectCode, cmbSubject.Text, firstQuarter, secondQuarter, thirdQuarter, fourthQuarter);
                 }
-
-
-
-
+                
                 UpdateDatabase(query);
             }
         }

@@ -129,6 +129,7 @@
             this.Controls.Add(this.cmbPaymentType);
             this.Controls.Add(this.label5);
             this.Name = "FrmPayment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPayment";
             this.Load += new System.EventHandler(this.FrmPayment_Load);
             this.ResumeLayout(false);
